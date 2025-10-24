@@ -1,0 +1,38 @@
+.lista-clientes {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.lista-clientes h2 {
+  text-align: center;
+  color: #3f51b5;
+}
+
+.lista-clientes ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lista-clientes li {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.lista-clientes li strong {
+  font-size: 1.2rem;
+  color: #3f51b5;
+}
+
+#clientes-cadastrados {
+  font-family: sans-serif;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}

@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
   http = inject(HttpClient);
   apiUrl = 'http://localhost:3000/clientes';
 
+  Clientes: any[] = []; // Array vazio para armazenar os clientes
+
   ngOnInit() {
     this.listarClientes();
   }
@@ -27,8 +29,10 @@ export class AppComponent implements OnInit {
 
   listarClientes() {
     this.http.get(this.apiUrl).subscribe(
-      (data) => {
+      (data: any) => {
         console.log('Clientes:', data);
+
+        this.Clientes = data;
       },
       (error) => {
         console.error('Erro ao listar clientes:', error);
