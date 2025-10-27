@@ -2,13 +2,15 @@ import { Component, signal, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http'; 
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
 
   templateUrl: './app.html',
@@ -39,4 +41,29 @@ export class AppComponent implements OnInit {
       }
     );
   }
+
+  novoCliente = {
+    nome: '',
+    email: '',
+    telefone: '',
+  };
+
+  cadastrarCliente() {
+
+  this.http.post(this.apiUrl, this.novoCliente).subscribe(
+    (resposta) => {
+      console.log('Cliente cadastrado!', resposta);
+
+      this.novoCliente = { nome: '', email: '', telefone: '' };
+
+      // Atualiza a lista de clientes na tela
+      this.listarClientes(); 
+    },
+    (erro) => {
+      // Erro!
+      console.error('Erro ao cadastrar cliente:', erro);
+    }
+  );
+}
+
 }
