@@ -1,59 +1,48 @@
-# CRUDClientes
+# Frontend - CRUD de Clientes
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.5.
+Esta é a interface web (frontend) para o sistema de cadastro de clientes, construída com Angular 20.3.6 O projeto foi desenvolvido como parte de um treinamento full-stack.
 
-## Development server
+Este projeto foi feito para consumir a API de backend, que está disponível em outro repositório:
+**➡️ Repositório do Backend (API): [https://github.com/EnricoNSilva/crud-clientes-api](https://github.com/EnricoNSilva/crud-clientes-api)**
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## Funcionalidades Implementadas
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* **Listar (Read):** Exibe todos os clientes cadastrados na tela principal.
+* **Cadastrar (Create):** Permite adicionar um novo cliente através de um formulário.
+* **Alterar (Update):** Permite editar os dados de um cliente existente através de um modal (popup).
+* **Excluir (Delete):** Permite remover um cliente do banco de dados com uma confirmação.
 
-## Code scaffolding
+## Pré-requisitos
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Antes de começar, você precisará ter as seguintes ferramentas instaladas:
+* [Node.js](https://nodejs.org/) (que inclui o npm)
+* [Angular CLI](https://angular.io/cli) (Instale com `npm install -g @angular/cli`)
+* [Git](https://git-scm.com/)
 
-```bash
-ng generate component component-name
-```
+## 🚀 Como Rodar o Frontend
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1.  **Clone este repositório:**
+    ```bash
+    git clone [https://github.com/EnricoNSilva/CRUD-Clientes.git](https://github.com/EnricoNSilva/CRUD-Clientes.git)
+    cd CRUD-Clientes
+    ```
 
-```bash
-ng generate --help
-```
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
 
-## Building
+3.  **Inicie a aplicação:**
+    ```bash
+    ng serve
+    ```
 
-To build the project run:
+A aplicação será aberta automaticamente no seu navegador em `http://localhost:4200`.
 
-```bash
-ng build
-```
+### ⚠️ **IMPORTANTE: Pré-requisito do Backend**
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Para que esta aplicação (Frontend) funcione corretamente, o **servidor backend deve estar rodando** ao mesmo tempo.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Por favor, siga as instruções no [README do repositório da API](https://github.com/EnricoNSilva/crud-clientes-api) para iniciar o servidor em `http://localhost:3000`.
