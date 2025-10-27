@@ -75,15 +75,15 @@ export class AppComponent implements OnInit {
   onSalvarEdicao(clienteEditado: any) {
     const id = clienteEditado._id;
 
-    // 2. Usamos http.put() para enviar os dados editados
+    // http.put() para enviar os dados editados
     this.http.put(`${this.apiUrl}/${id}`, clienteEditado).subscribe(
       (resposta) => {
         console.log('Cliente alterado!', resposta);
 
-        // 3. Fecha o modal (setando a "gaveta" como nula)
+        // Fecha o modal (setando a "gaveta" como nula)
         this.clienteSendoEditado = null;
 
-        // 4. Atualiza a lista na tela
+        // Atualiza a lista na tela
         this.listarClientes();
       },
       (erro) => {
@@ -95,5 +95,26 @@ export class AppComponent implements OnInit {
   onCancelarEdicao() {
     // Apenas fecha o modal (setando a "gaveta" como nula)
     this.clienteSendoEditado = null;
+  }
+
+  excluirCliente(idCliente: string, nomeCliente: string) {
+  
+    // Pop up de confirmação
+  const confirmacao = confirm(`Tem certeza que deseja excluir o cliente "${nomeCliente}"?`);
+
+  if (confirmacao) {
+    
+      this.http.delete(`${this.apiUrl}/${idCliente}`).subscribe(
+        (resposta) => {
+          console.log('Cliente excluído!', resposta);
+          // Atualiza a lista na tela
+          this.listarClientes();
+        },
+        (erro) => {
+          console.error('Erro ao excluir cliente:', erro);
+        }
+      );
+    }
+    // Fecha o "if" de confirmação
   }
 }
