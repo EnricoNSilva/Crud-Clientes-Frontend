@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http'; 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { EditModal } from './edit-modal/edit-modal';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     RouterOutlet,
     CommonModule,
-    FormsModule
+    FormsModule,
+    EditModal
   ],
 
   templateUrl: './app.html',
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit {
   protected readonly title = signal('CRUD-Clientes');
   http = inject(HttpClient);
   apiUrl = 'http://localhost:3000/clientes';
+  clienteSendoEditado : any = null;
 
   Clientes: any[] = []; // Array vazio para armazenar os clientes
 
@@ -50,20 +53,47 @@ export class AppComponent implements OnInit {
 
   cadastrarCliente() {
 
-  this.http.post(this.apiUrl, this.novoCliente).subscribe(
-    (resposta) => {
-      console.log('Cliente cadastrado!', resposta);
+    this.http.post(this.apiUrl, this.novoCliente).subscribe(
+      (resposta) => {
+        console.log('Cliente cadastrado!', resposta);
 
-      this.novoCliente = { nome: '', email: '', telefone: '' };
+        this.novoCliente = { nome: '', email: '', telefone: '' };
 
-      // Atualiza a lista de clientes na tela
-      this.listarClientes(); 
-    },
-    (erro) => {
-      // Erro!
-      console.error('Erro ao cadastrar cliente:', erro);
-    }
-  );
-}
+        // Atualiza a lista de clientes na tela
+        this.listarClientes(); 
+      },
+      (erro) => {
+        console.error('Erro ao cadastrar cliente:', erro);
+      }
+    );
+  }
 
+  selecionarClienteParaEditar(cliente: any) {
+    this.clienteSendoEditado = cliente;
+  }
+
+  onSalvarEdicao(clienteEditado: any) {
+    const id = clienteEditado._id;
+
+    // 2. Usamos http.put() para enviar os dados editados
+    this.http.put(`${this.apiUrl}/${id}`, clienteEditado).subscribe(
+      (resposta) => {
+        console.log('Cliente alterado!', resposta);
+
+        // 3. Fecha o modal (setando a "gaveta" como nula)
+        this.clienteSendoEditado = null;
+
+        // 4. Atualiza a lista na tela
+        this.listarClientes();
+      },
+      (erro) => {
+        console.error('Erro ao alterar cliente:', erro);
+      }
+    );
+  }
+
+  onCancelarEdicao() {
+    // Apenas fecha o modal (setando a "gaveta" como nula)
+    this.clienteSendoEditado = null;
+  }
 }

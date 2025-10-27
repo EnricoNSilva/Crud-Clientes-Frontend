@@ -30,6 +30,8 @@
       <strong>{{ cliente.nome }}</strong>
       <p>Email: {{ cliente.email }}</p>
       <p>Telefone: {{ cliente.telefone }}</p>
+
+      <button (click)="selecionarClienteParaEditar(cliente)">Editar</button>
     </li>
   </ul>
 
@@ -39,3 +41,10 @@
 </div>
 
 <router-outlet></router-outlet>
+
+<app-edit-modal 
+  *ngIf="clienteSendoEditado"
+  [cliente]="clienteSendoEditado"
+  (salvar)="onSalvarEdicao($event)"
+  (cancelar)="onCancelarEdicao()">
+</app-edit-modal>

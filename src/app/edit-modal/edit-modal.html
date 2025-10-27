@@ -1,0 +1,25 @@
+<div class="modal-backdrop" (click)="onCancelar()"></div>
+
+<div class="modal-content">
+  <h2>Editando: {{ clienteEditado.nome }}</h2>
+
+  <form (ngSubmit)="onSalvar()">
+    <div>
+      <label for="edit-nome">Nome:</label>
+      <input type="text" id="edit-nome" name="edit-nome" [(ngModel)]="clienteEditado.nome" required>
+    </div>
+    <div>
+      <label for="edit-email">Email:</label>
+      <input type="email" id="edit-email" name="edit-email" [(ngModel)]="clienteEditado.email" required>
+    </div>
+    <div>
+      <label for="edit-telefone">Telefone:</label>
+      <input type="text" id="edit-telefone" name="edit-telefone" [(ngModel)]="clienteEditado.telefone">
+    </div>
+
+    <div class="botoes">
+      <button type="submit" (click)="onSalvar()">Salvar Alterações</button>
+      <button type="button" (click)="onCancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>
