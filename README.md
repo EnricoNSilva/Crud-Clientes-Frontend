@@ -25,7 +25,7 @@ Antes de começar, você precisará ter as seguintes ferramentas instaladas:
 
 1.  **Clone este repositório:**
     ```bash
-    git clone [https://github.com/EnricoNSilva/CRUD-Clientes.git](https://github.com/EnricoNSilva/CRUD-Clientes.git)
+    git clone https://github.com/EnricoNSilva/Crud-Clientes-Frontend.git
     cd CRUD-Clientes
     ```
 
