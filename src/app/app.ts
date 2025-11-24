@@ -22,7 +22,7 @@ import { EditModal } from './edit-modal/edit-modal';
 export class AppComponent implements OnInit {
   protected readonly title = signal('CRUD-Clientes');
   http = inject(HttpClient);
-  apiUrl = 'http://localhost:3000/clientes';
+  apiUrl = 'https://crud-clientes-api.vercel.app/';
   clienteSendoEditado : any = null;
 
   Clientes: any[] = []; // Array vazio para armazenar os clientes
